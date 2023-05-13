@@ -12,15 +12,15 @@ Note that for uplink, The Things Network uses 2nd Sub-Band only (channels 8 to 1
 The channels are numbered in [regional parameters](./assets/regional_parameters_1_0_4.pdf) see section 2.8.2. 
 ![](assets/Screenshot%202023-05-13%20at%2022.12.35.png)
 More specifically, They are
-8.  **916.8** - SF7BW125 to SF12BW125
-9.  **917.0** - SF7BW125 to SF12BW125
-10.  **917.2** - SF7BW125 to SF12BW125
-11.  **917.4** - SF7BW125 to SF12BW125
-12.  **917.6** - SF7BW125 to SF12BW125
-13.  **917.8** - SF7BW125 to SF12BW125
-14.  **918.0** - SF7BW125 to SF12BW125
-15.  **918.2** - SF7BW125 to SF12BW125
-65.  **917.5** - SF8BW500
+8.  **916.8** - SF7BW125 to SF12BW125  
+9.  **917.0** - SF7BW125 to SF12BW125  
+10.  **917.2** - SF7BW125 to SF12BW125 
+11.  **917.4** - SF7BW125 to SF12BW125  
+12.  **917.6** - SF7BW125 to SF12BW125  
+13.  **917.8** - SF7BW125 to SF12BW125  
+14.  **918.0** - SF7BW125 to SF12BW125  
+15.  **918.2** - SF7BW125 to SF12BW125  
+65.  **917.5** - SF8BW500  
 
 
 ## todo
