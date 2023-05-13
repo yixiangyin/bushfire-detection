@@ -22,5 +22,5 @@ It seems that if the micro-python firmware is not installed properly on pico, we
 
 ## experiment
 
-config:
+config:  
 I run the code for 1 minute on one node. The code and the data is in this [commit](https://github.com/yixiangyin/bushfire-detection/commit/95666583a58986bcf019089b41eddd16a7bb65fb). 
