@@ -13,3 +13,14 @@ It seems that if the micro-python firmware is not installed properly on pico, we
 ## todo
 - [ ] develop a script to analyse the json file
 - [ ] develop a script to deploy the scripts automatically
+- [ ] try to understand what the channel and sf does the device actually use by inspecting the packets, and see how it maps to the regional parameteres.
+
+
+## idea
+- if we can store the appKey on each pico, then we just set the main.py script to read from the file, then the script can be same for all devices, we just need to change the config file inside each of the pico.
+
+
+## experiment
+
+config:
+I run the code for 1 minute on one node. The code and the data is in this [commit](https://github.com/yixiangyin/bushfire-detection/commit/95666583a58986bcf019089b41eddd16a7bb65fb). 
