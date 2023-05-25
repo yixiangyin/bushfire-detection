@@ -1,12 +1,53 @@
-# local main.py on each end device 
 
-app_key = '4867A28A1DD189110D1A60B05D438AEC'
+# Open the configuration file
+with open("config.txt", "r") as file:
+    # Read the contents of the file
+    file_contents = file.read()
 
+# Split the file contents by lines
+lines = file_contents.split("\n")
+
+# Initialize variables
+id = None
+appKey = None
+
+# Iterate over the lines
+for line in lines:
+    line = line.strip()
+    # Split each line by ':' to separate the key and value
+    key_value = line.split(":")
+    key = key_value[0]
+    value = key_value[1]
+    # Remove any leading/trailing whitespace from the key and value
+    key = key.strip()
+    value = value.strip()
+
+    # Check the key and assign the value accordingly
+    if key == "id":
+        id = int(value)
+    elif key == "appKey":
+        appKey = value
+    # elif key == "DR":
+    #     DR = value
+    # elif key == "channels":
+    #     channels = value
+DR = '6'
+# Print the id and appKey
+print("id:", id)
+print("appKey:", appKey)
+print("dr:", DR)
+# print("channels:", channels)
+ 
+        
+app_key = appKey
+
+####### settings
 # Regional LoRaWAN settings. You may need to modify these depending on your region.
 # If you are using AU915: Australia
-band='AU915'
-channels='8-15'
-
+band = 'AU915'
+channels = '65' # different: 8,9,10,11
+# DR = '0' # different: 2,3,4,5
+out_file = "dataChannelDR.csv"
 # If you are using US915
 # band='US915'
 # channels='8-15'
@@ -14,16 +55,13 @@ channels='8-15'
 # If you are using EU868
 # band='EU868'
 # channels='0-2'
-
-
-
-
+######## end settings
 from machine import UART, Pin
+from sys import exit
 from utime import sleep_ms
 # allow the voltage to be stable
 sleep_ms(5000)
 
-from sys import exit
 
 uart1 = UART(1, baudrate=9600, tx=Pin(4), rx=Pin(5))
 join_EUI = None   # These are populated by this script
@@ -145,12 +183,33 @@ get_eui_from_radio()
 
 set_app_key(app_key)
 
-configure_regional_settings(band=band, DR='0', channels=channels)
+configure_regional_settings(band=band, DR=DR, channels=channels)
 
 join_the_things_network()
 
+import time
 
 # Send example data
 print("sending test messages")
-while True:
-    send_message("Hello World!")
+# file = open(out_file, "w")
+
+
+for i in range(0,6):
+  for ch in range(8,16):
+    count = 0
+    res = []
+    while count < 1:
+    # send_AT('+DR='+band)
+        start = time.time()
+        send_AT('+DR='+str(i))
+        send_AT('+CH=NUM,'+str(ch))
+        # send_AT('+CH=NUM')
+        send_message(str(count))
+        res.append(time.time()-start)
+        # print("send",count)
+        # file.write(str(count)+"\n")
+        # file.flush()
+        count+=1
+    print("channels: "+str(ch) + ","+ "DR: "+str(i)+" # of msg:",len(res),", avg msg time:",sum(res)/len(res))
+
+
